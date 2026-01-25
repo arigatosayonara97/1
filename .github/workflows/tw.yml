@@ -1,53 +1,65 @@
-name: Baixando Lista
+name: IPTV Channel Checker
 
 on:
-  schedule:
-    - cron: '0 13 * * *'  # Executa todos os dias às 10h (horário de Brasília)
-  pull_request:
+  push:
     branches:
       - main
   workflow_dispatch:
+  schedule:
+    - cron: "0 */5 * * *"     # A cada 5 horas
 
 jobs:
-  build:
+  check-iptv-channels:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout Repositório
-      uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    - name: Configurar Git
-      run: |
-        git config --global user.email "action@github.com"
-        git config --global user.name "GitHub Action"
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
 
-    - name: Deletar Log
-      run: |
-        rm -rf ./log.txt
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip setuptools wheel
+          pip install \
+            aiohttp \
+            m3u8 \
+            tqdm \
+            requests \
+            beautifulsoup4 \
+            lxml \
+            fuzzywuzzy \
+            python-Levenshtein
 
-    - name: Instalando dependências
-      run: |
-        python3 -m pip install --upgrade pip
-        python3 -m pip install streamlink selenium requests beautifulsoup4 lxml python-dateutil yt-dlp youtube-dl pytz gdown yt_dlp playwright
+      - name: Run checker (tw.py)
+        run: python tw.py
+        continue-on-error: true
 
-    - name: Verificar versão do Python
-      run: |
-        python3 --version
+      - name: Upload results as artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: iptv-channel-results
+          path: |
+            working_channels*.json
+            categories/
+            countries/
+          retention-days: 7
 
-    - name: Rodar script downlist.py
-      run: |
-        python3 tw.py
+      - name: Commit and push updated files (if changed)
+        run: |
+          git config --global user.name "GitHub Action"
+          git config --global user.email "action@github.com"
 
-    - name: Adicionar Mudanças ao Controle de Versão
-      run: |
-        git add -A
-        git status
+          git add working_channels*.json categories/ countries/ || true
 
-    - name: Garantir alterações mais recentes do repositório remoto
-      run: |
-        git pull origin main || echo "Erro ao fazer pull."
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
 
-    - name: Commit e Push
-      run: |
-        git commit -m "Atualizar lista baixada" || echo "Nenhuma mudança para commitar."
-        git push origin main || echo "Erro ao fazer push."
+          git commit -m "Automated update: IPTV channel lists ($(date -u +'%Y-%m-%d %H:%M UTC'))"
+          git push
