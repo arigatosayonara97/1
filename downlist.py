@@ -148,75 +148,219 @@ print(f"URLs de EPG encontradas e preservadas:")
 for epg_url in epg_urls:
     print(f"  - {epg_url}")
 
+
+
+
+
+
+
+
+
+
+import os
+import requests
+import logging
+from logging.handlers import RotatingFileHandler
+import json
+from bs4 import BeautifulSoup
+import re
+
+# =========================
+# CONFIGURAÇÃO DE LOG
+# =========================
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
+
+log_file = "log.txt"
+file_handler = RotatingFileHandler(log_file, maxBytes=1000000, backupCount=5)
+file_handler.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(message)s'))
+logger.addHandler(file_handler)
+
+# =========================
+# DOWNLOAD E MERGE M3U
+# =========================
+repo_urls = [
+    "https://github.com/iprtl/m3u/raw/b8507db8229defeda88512eaaf66bfe0e385e81c/Freetv.m3u",
+]
+
+lists = []
+
+for url in repo_urls:
+    print(f"Processando URL: {url}")
+    try:
+        response = requests.get(url, allow_redirects=True, timeout=15)
+
+        if response.status_code == 200:
+            if url.lower().endswith(('.m3u', '.m3u8')) or '#EXTM3U' in response.text:
+                filename = url.split("/")[-1]
+                lists.append((filename, response.text))
+        else:
+            print(f"Erro ao acessar {url}")
+    except requests.exceptions.RequestException as e:
+        print(f"Erro: {e}")
+
+lists = sorted(lists, key=lambda x: x[0])
+
+output_file = "lista1.M3U"
+line_count = 0
+wrote_header = False
+epg_urls = []
+
+def extract_epg_url(line):
+    match = re.search(r'url-tvg=["\']([^"\']+)["\']', line, re.IGNORECASE)
+    return match.group(1) if match else None
+
+with open(output_file, "w") as f:
+    for _, content in lists:
+        lines = content.splitlines()
+
+        for line in lines:
+            line = line.strip()
+            if not line:
+                continue
+
+            # 🔹 NUNCA REMOVE #EXTM3U
+            if line.startswith("#EXTM3U"):
+                f.write(line + "\n")
+                line_count += 1
+
+                epg = extract_epg_url(line)
+                if epg and epg not in epg_urls:
+                    epg_urls.append(epg)
+                continue
+
+            f.write(line + "\n")
+            line_count += 1
+
+            if line_count >= 212:
+                break
+        if line_count >= 212:
+            break
+
+print(f"Arquivo base criado com {line_count} linhas")
+
+# =========================
+# FUNÇÕES AUXILIARES
+# =========================
+def check_url(url):
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
+    }
+    try:
+        r = requests.get(url, headers=headers, timeout=15)
+        return r.status_code == 200
+    except requests.exceptions.RequestException:
+        return False
+
+def parse_extinf_line(line):
+    group = re.search(r'group-title="([^"]+)"', line)
+    tvg_id = re.search(r'tvg-id="([^"]+)"', line)
+    tvg_logo = re.search(r'tvg-logo="([^"]+)"', line)
+
+    name = line.split(",")[-1].strip()
+
+    return (
+        name,
+        group.group(1) if group else "Undefined",
+        tvg_id.group(1) if tvg_id else "Undefined",
+        tvg_logo.group(1) if tvg_logo else "Undefined.png"
+    )
+
+def search_google_images(query):
+    url = f"https://www.google.com/search?hl=pt-BR&q={query}&tbm=isch"
+    headers = {"User-Agent": "Mozilla/5.0"}
+
+    try:
+        r = requests.get(url, headers=headers)
+        soup = BeautifulSoup(r.text, "html.parser")
+        imgs = soup.find_all("img")
+        if len(imgs) > 1:
+            return imgs[1]["src"]
+    except Exception as e:
+        logger.error(f"Erro ao buscar imagem: {e}")
+
+    return None
+
+# =========================
+# PROCESSAMENTO FINAL
+# =========================
 def process_m3u_file(input_file, output_file):
     with open(input_file) as f:
         lines = f.readlines()
 
-    channel_data = []
-    extm3u_headers = []  # ← guarda TODOS os #EXTM3U encontrados
+    extm3u_headers = []
+    channels = []
 
     i = 0
     while i < len(lines):
         line = lines[i].strip()
 
-        # 🔹 PRESERVA QUALQUER #EXTM3U
+        # 🔹 PRESERVA TODAS AS LINHAS #EXTM3U
         if line.startswith("#EXTM3U"):
             if line not in extm3u_headers:
                 extm3u_headers.append(line)
             i += 1
             continue
 
-        if line.startswith('#EXTINF'):
-            ch_name, group_title, tvg_id, tvg_logo = parse_extinf_line(line)
-            extra_lines = []
+        if line.startswith("#EXTINF"):
+            name, group, tvg_id, logo = parse_extinf_line(line)
+            extras = []
             link = None
 
             while i + 1 < len(lines):
                 i += 1
-                next_line = lines[i].strip()
-                if next_line.startswith('#'):
-                    extra_lines.append(next_line)
+                nxt = lines[i].strip()
+                if nxt.startswith("#"):
+                    extras.append(nxt)
                 else:
-                    link = next_line
+                    link = nxt
                     break
 
             if link and check_url(link):
-                if tvg_logo in ["", "N/A", "Undefined.png"]:
-                    logo_url = search_google_images(ch_name)
-                    tvg_logo = logo_url if logo_url else "NoLogoFound.png"
+                if logo in ["Undefined.png", "", "N/A"]:
+                    found_logo = search_google_images(name)
+                    logo = found_logo if found_logo else logo
 
-                channel_data.append({
-                    'name': ch_name,
-                    'group': group_title,
-                    'tvg_id': tvg_id,
-                    'logo': tvg_logo,
-                    'url': link,
-                    'extra': extra_lines
+                channels.append({
+                    "name": name,
+                    "group": group,
+                    "tvg_id": tvg_id,
+                    "logo": logo,
+                    "url": link,
+                    "extra": extras
                 })
 
         i += 1
 
-    # ✍️ GERA O ARQUIVO FINAL
+    # ✍️ REGRAVA O ARQUIVO FINAL
     with open(output_file, "w") as f:
-        # 🔹 escreve TODOS os #EXTM3U preservados
-        for header in extm3u_headers:
-            f.write(header + "\n")
+        # escreve TODOS os #EXTM3U encontrados
+        for h in extm3u_headers:
+            f.write(h + "\n")
 
-        # fallback de segurança
         if not extm3u_headers:
             f.write("#EXTM3U\n")
 
-        for channel in channel_data:
-            extinf_line = (
-                f'#EXTINF:-1 group-title="{channel["group"]}" '
-                f'tvg-id="{channel["tvg_id"]}" '
-                f'tvg-logo="{channel["logo"]}",{channel["name"]}'
+        for ch in channels:
+            f.write(
+                f'#EXTINF:-1 group-title="{ch["group"]}" '
+                f'tvg-id="{ch["tvg_id"]}" '
+                f'tvg-logo="{ch["logo"]}",{ch["name"]}\n'
             )
-            f.write(extinf_line + '\n')
-            for extra in channel['extra']:
-                f.write(extra + '\n')
-            f.write(channel['url'] + '\n')
+            for e in ch["extra"]:
+                f.write(e + "\n")
+            f.write(ch["url"] + "\n")
 
     with open("playlist.json", "w") as f:
-        json.dump(channel_data, f, indent=2)
+        json.dump(channels, f, indent=2)
+
+# =========================
+# EXECUÇÃO
+# =========================
+process_m3u_file("lista1.M3U", "lista1.M3U")
+
+print("Processamento concluído ✔")
+print("EPGs preservados:")
+for epg in epg_urls:
+    print(" -", epg)
 
