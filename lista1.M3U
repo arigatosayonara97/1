@@ -1,0 +1,118 @@
+#EXTM3U
+#EXTINF:-1 group-title="Telegram @iprtlk" tvg-id="Undefined" tvg-logo="https://jerrymoz.files.wordpress.com/2024/03/qr_paypal.png",❖ Telegram @iprtlk
+https://jerrymoz.wordpress.com/wp-content/uploads/2024/03/qr_paypal.png?@iprtlk
+#EXTINF:-1 group-title="Buy me a Coffee" tvg-id="Undefined" tvg-logo="https://jerrymoz.files.wordpress.com/2024/03/qr_paypal.png",❖ Buy me a Coffee
+https://jerrymoz.wordpress.com/wp-content/uploads/2024/03/qr_paypal.png
+#EXTINF:-1 group-title="Portugal..." tvg-id="Undefined" tvg-logo="https://portaltvportuguesa.com.br/wp-content/uploads/2022/08/portaltv_b1_w.png",❖ Tv Portuguesa 🇵🇹🇧🇷
+https://cdn.livespanel.com/portaltvportuguesa6356/live/playlist.m3u8?@iprtlk
+#EXTINF:-1 group-title="Portugal..." tvg-id="RTP.Internacional.pt" tvg-logo="https://raw.githubusercontent.com/iprtl/p1/master/logo/RTPi.png",❖ RTP Internacional ᴸᴼᵂ 🇵🇹
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (X11; Linux x86_64; rv:144.0) Gecko/20100101 Firefox/144.0
+#EXTVLCOPT:http-origin=https://www.rtp.pt
+#EXTVLCOPT:http-referrer=https://www.rtp.pt/play/direto/rtpinternacional
+https://streaming-live.rtp.pt/liverepeater/rtpi.smil/playlist.m3u8
+#EXTINF:-1 group-title="News 🇵🇹🇧🇷" tvg-id="RTP.3.HD.pt" tvg-logo="https://raw.githubusercontent.com/iprtl/p1/master/logo/rtpnoticias.webp",❖ RTP Noticias_ 🇵🇹
+#EXTVLCOPT:http-user-agent=IE
+https://streaming-live.rtp.pt/liverepeater/rtpnHD.smil/playlist.m3u8?@iprtlk
+#EXTINF:-1 group-title="News 🇵🇹🇧🇷" tvg-id="RTP.3.HD.pt" tvg-logo="https://raw.githubusercontent.com/iprtl/p1/master/logo/rtpnoticias.webp",❖ RTP Noticias_ 🇵🇹
+#EXTVLCOPT:http-user-agent=IE
+#KODIPROP:inputstream=inputstream.adaptive
+#KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
+#KODIPROP:inputstream.adaptive.license_key=761e7af421a4386e82eaa861a49b3d73:f1eb56955a79e555b1f8b96aec3afa25
+http://streaming-live.rtp.pt/liverepeater/rtpnHD.smil/manifest.mpd?@iprtlk
+#EXTINF:-1 group-title="Portugal..." tvg-id="RTP.Memória.pt" tvg-logo="https://github.com/tv-logo/tv-logos/raw/main/countries/portugal/rtp-memoria-pt.png",❖ RTP Memoria ᴸᴼᵂ 🇵🇹
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (X11; Linux x86_64; rv:144.0) Gecko/20100101 Firefox/144.0
+#EXTVLCOPT:http-origin=https://www.rtp.pt
+#EXTVLCOPT:http-referrer=https://www.rtp.pt/play/direto/rtpmemoria
+https://streaming-live.rtp.pt/liverepeater/rtpmem.smil/playlist.m3u8
+#EXTINF:-1 group-title="Portugal..." tvg-id="RTP.Açores.pt" tvg-logo="https://github.com/tv-logo/tv-logos/raw/main/countries/portugal/rtp-acores-pt.png",❖ RTP Açores 🇵🇹
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (X11; Linux x86_64; rv:144.0) Gecko/20100101 Firefox/144.0
+#EXTVLCOPT:http-origin=https://www.rtp.pt
+#EXTVLCOPT:http-referrer=https://www.rtp.pt/play/direto/rtpacores
+https://streaming-live.rtp.pt/liverepeater/rtpacoresHD.smil/playlist.m3u8
+#EXTINF:-1 group-title="Portugal..." tvg-id="RTP.Madeira.pt" tvg-logo="https://github.com/tv-logo/tv-logos/raw/main/countries/portugal/rtp-madeira-pt.png",❖ RTP Madeira ᴸᴼᵂ 🇵🇹
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (X11; Linux x86_64; rv:144.0) Gecko/20100101 Firefox/144.0
+#EXTVLCOPT:http-origin=https://www.rtp.pt
+#EXTVLCOPT:http-referrer=https://www.rtp.pt/play/direto/rtmadeira
+https://streaming-live.rtp.pt/liverepeater/rtpmadeira.smil/playlist.m3u8
+#EXTINF:-1 group-title="Portugal..." tvg-id="RTP.África.pt" tvg-logo="https://github.com/tv-logo/tv-logos/raw/main/countries/portugal/rtp-africa-pt.png",❖ RTP África ᴸᴼᵂ 🇵🇹
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (X11; Linux x86_64; rv:144.0) Gecko/20100101 Firefox/144.0
+#EXTVLCOPT:http-origin=https://www.rtp.pt
+#EXTVLCOPT:http-referrer=https://www.rtp.pt/play/direto/rtpafrica
+https://streaming-live.rtp.pt/liverepeater/rtpafrica.smil/playlist.m3u8
+#EXTINF:-1 group-title="Portugal..." tvg-id="ARTV.pt" tvg-logo="https://github.com/iprtl/p1/raw/master/logo/ARTV.webp",❖ ARTV 🇵🇹
+https://playout175.livextend.cloud/livenlin4/2liveartvpub2/playlist.m3u8?@iprtlk
+#EXTINF:-1 group-title="Portugal..." tvg-id="SIC.HD.pt" tvg-logo="https://github.com/tv-logo/tv-logos/raw/main/countries/portugal/sic-pt.png",❖ SIC 🇵🇹
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (X11; Linux x86_64; rv:144.0) Gecko/20100101 Firefox/144.0
+#EXTVLCOPT:http-origin=https://sic.pt
+#EXTVLCOPT:http-referrer=https://sic.pt/
+https://d1zx6l1dn8vaj5.cloudfront.net/out/v1/b89cc37caa6d418eb423cf092a2ef970/index.m3u8?@iprtlk
+#EXTINF:-1 group-title="News 🇵🇹🇧🇷" tvg-id="SIC.Notícias.HD.pt" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/portugal/sic-noticias-pt.png",❖ SIC Noticias 🇵🇹
+https://cdnapisec.kaltura.com/p/4526593/sp/4526593/playManifest/entryId/1_j8ztwihx/deliveryProfileId/672/protocol/https/format/applehttp/a.m3u8
+#EXTINF:-1 group-title="Portugal..." tvg-id="SIC.Replay.pt" tvg-logo="https://raw.githubusercontent.com/iprtl/p1/master/logo/SICReplay.webp",❖ SIC Replay 🇵🇹
+https://production-fast-sic.content.okast.tv/fa2e8c4385712f9a7dce4ff2dcebac2e/channels/d9070446-8448-455e-8075-773b1ba12562/d47eae0f-ad77-414a-9a1d-2a6628ba18c3/media_.m3u8?@iprtlk
+#EXTINF:-1 group-title="Portugal..." tvg-id="SIC.Alta.Definição.pt" tvg-logo="https://raw.githubusercontent.com/iprtl/p1/master/logo/SICAltaDefinicao.webp",❖ SIC Alta Definição 🇵🇹
+https://production-fast-sic.content.okast.tv/fa2e8c4385712f9aa54bbe52b1bd9b6b/channels/d9070446-8448-455e-8075-773b1ba12562/fc831b20-f252-4e7d-8cc5-2d05f4d43c1c/media_.m3u8?@iprtlk
+#EXTINF:-1 group-title="Portugal..." tvg-id="tvi.internacional.pt" tvg-logo="https://logo.m3uassets.com/tviinternacional.png",❖ TVI Internacional 🇵🇹
+https://raw.githubusercontent.com/ipstreet312/freeiptv/master/ressources/tvipt/sh/tviint.m3u8?@iprtlk
+#EXTINF:-1 group-title="Portugal..." tvg-id="TVI.HD.pt" tvg-logo="https://github.com/iprtl/p1/raw/master/logo/tvi.webp",❖ TVI 🇵🇹
+https://raw.githubusercontent.com/ipstreet312/freeiptv/master/ressources/tvipt/sh/tvi.m3u8?@iprtlk
+#EXTINF:-1 group-title="Portugal..." tvg-id="TVI.HD.pt" tvg-logo="https://github.com/iprtl/p1/raw/master/logo/tvi.webp",❖ TVI 🇵🇹
+https://github.com/thomraider12/canaistvpt/raw/main/m3u8s/tvi.m3u8?@iprtlk
+#EXTINF:-1 group-title="News 🇵🇹🇧🇷" tvg-id="CNN.Portugal.HD.pt" tvg-logo="https://raw.githubusercontent.com/iprtl/p1/master/logo/cnnpt.png",❖ CNN Portugal 🇵🇹
+https://raw.githubusercontent.com/ipstreet312/freeiptv/master/ressources/tvipt/sh/cnnpt.m3u8?@iprtlk
+#EXTINF:-1 group-title="News 🇵🇹🇧🇷" tvg-id="CNN.Portugal.HD.pt" tvg-logo="https://raw.githubusercontent.com/iprtl/p1/master/logo/cnnpt.png",❖ CNN Portugal 🇵🇹
+https://github.com/thomraider12/canaistvpt/raw/main/m3u8s/cnnpt.m3u8?@iprtlk
+#EXTINF:-1 group-title="Portugal..." tvg-id="V+TVI.pt" tvg-logo="https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/portugal/v%2Btvi-pt.png",❖ V+ TVI 🇵🇹
+https://video-auth2.iol.pt/live_vmais/live_vmais/edge_servers/vmais-720p/playlist.m3u8?@iprtlk
+#EXTINF:-1 group-title="Portugal..." tvg-id="tvi.ficcao.pt" tvg-logo="https://logo.m3uassets.com/tvificcao.png",❖ TVI Ficção 🇵🇹
+https://video-auth1.iol.pt/live_tvi_ficcao/live_tvi_ficcao/edge_servers/tvificcao-720p/playlist.m3u8?@iprtlk
+#EXTINF:-1 group-title="Portugal..." tvg-id="tvi.reality.pt" tvg-logo="https://github.com/iprtl/p1/raw/master/logo/tvi%C3%81frica.webp",❖ TVI África ᴸᴼᵂ 🇵🇹
+https://video-auth4.iol.pt/live_tvi_africa/live_tvi_africa/edge_servers/tviafrica-480p/playlist.m3u8?@iprtlk
+#EXTINF:-1 group-title="Portugal..." tvg-id="tvi.reality.pt" tvg-logo="https://github.com/iprtl/p1/raw/master/logo/tviReality.webp",❖ TVI Reality 🇵🇹
+https://video-auth5.iol.pt/live_tvi_reality/live_tvi_reality/edge_servers/tvireality-720_passthrough/playlist.m3u8?@iprtlk
+#EXTINF:-1 group-title="Portugal..." tvg-id="Porto.Canal.HD.pt" tvg-logo="https://raw.githubusercontent.com/iprtl/p1/master/logo/PortoCanal.webp",❖ Porto Canal ⚽️ 🇵🇹
+https://pull-live-156-1.global.ssl.fastly.net/pc5865dc25400thmb-ea6bf03b14fa318f7133/smil:pc1-jhrgyuoqe5865db-68tkgb14fa318f7133f03.smil/playlist.m3u8?@iprtlk
+#EXTINF:-1 group-title="Portugal..." tvg-id="" tvg-logo="https://raw.githubusercontent.com/iprtl/p1/master/logo/globonovelas.webp",❖ GloboPlay Novelas 🇧🇷
+#EXTVLCOPT:http-origin=https://reidoscanais.life/
+#EXTVLCOPT:http-referrer=https://reidoscanais.life/
+#EXTVLCOPT:http-user-agent=Mozilla/50 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/117.0
+#KODIPROP:inputstreamaddon=inputstream.adaptive
+#KODIPROP:inputstream.adaptive.manifest_type=dash
+#KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
+#KODIPROP:inputstream.adaptive.license_key=eab4523b0358f3c59f1da92b3f478232:253ef14355d987d4076b4544e4741977
+https://a128aivottepl-a.akamaihd.net/gru-nitro/live/clients/dash/enc/ds9ertnhrl/out/v1/cb791b7362754ba1b87d9474ccd95fa3/cenc.mpd
+#EXTINF:-1 group-title="Portugal..." tvg-id="" tvg-logo="https://i.imgur.com/g47oQ4n.png",❖ +SBT 🇧🇷
+https://aovivo.maissbt.com/v1/manifest/215c0da80606fed29372070168106400a6ca7e1a/SSAI_TITAN_V3/ac63b34e-0615-4402-a359-892f205ccd70/5.m3u8
+#EXTINF:-1 group-title="Portugal..." tvg-id="Record.pt" tvg-logo="https://raw.githubusercontent.com/iprtl/p1/master/logo/recordtv.webp",❖ Record Internacional 🇧🇷
+#EXTVLCOPT:http-user-agent=Dalvik/2.1.0 (Linux; U; Android 12; sti6140d360 Build/QT) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 TV Safari/537.36
+https://viamotionhsi.netplus.ch/live/eds/rederecordinternacional/browser-dash/rederecordinternacional.mpd
+#EXTINF:-1 group-title="Portugal..." tvg-id="São.Paulo/SP..LIKE.HD.br" tvg-logo="https://canallike.com.br/wp-content/uploads/2020/12/canal-like-logo.png",❖ L!ke
+https://cnl-cl.otteravision.com/cnl/cl_h265/cl_h265.m3u8?@iprtlk
+#EXTINF:-1 group-title="Portugal..." tvg-id="" tvg-logo="https://is.gd/1fFtHR",❖ Veja+ 🇧🇷
+https://gpa-vja-samsungtvplus-br.otteravision.com/gpa/vja/vja_h265.m3u8?@iprtlk
+#EXTINF:-1 group-title="Portugal..." tvg-id="" tvg-logo="https://tvcaras.com.br/wp-content/themes/perfil-revistas/assets/dist/img/tvcaras.png",❖ Caras tv 🇧🇷
+https://dfr80qz435crc.cloudfront.net/IJKL/Amagi/Caras/CarasTV_BR/CarasTV.m3u8?@iprtlk
+#EXTINF:-1 group-title="Portugal..." tvg-id="" tvg-logo="https://logo.m3uassets.com/tdmmacau.png",❖ Teledifusão de Macau 🇲🇴
+https://globallive.tdm.com.mo/ch2/ch2.live/playlist.m3u8?@iprtlk
+#EXTINF:-1 group-title="Portugal..." tvg-id="TV.Zimbo.pt" tvg-logo="https://i.imgur.com/SFD8CBh.png",❖ TV Zimbo 🇦🇴
+https://sgn-cdn-video.vods2africa.com/Tv-Zimbo/index.fmp4.m3u8
+#EXTINF:-1 group-title="Portugal..." tvg-id="TVM.HD.mt" tvg-logo="https://www.tvm.co.mz/templates/templatetvmmain/favicon.ico",❖ TVM Internacional ᴸᴼᵂ 🇲🇿
+http://online.tvm.co.mz:1935/live/Channel2.smil/playlist.m3u8?@iprtlk
+#EXTINF:-1 group-title="Portugal..." tvg-id="" tvg-logo="https://yt3.googleusercontent.com/9Zrl6psqQDobaLMkdfGFcSl2gqNNtcQhcoYW7mPFeK6YwIExqePsck1LT3AUu1JiX5jcgaEP=w0",❖ Conectv Algarve 🇵🇹🇧🇷
+https://stream01.msolutionbrasil.com.br/hls/conectv/live.m3u8?@iprtlk
+#EXTINF:-1 group-title="Portugal..." tvg-id="" tvg-logo="https://raw.githubusercontent.com/iprtl/p1/master/logo/contala.webp",❖ Conta Lá 🇵🇹 (Youtube)
+https://www.youtube.com/watch?v=3YotInjS45A
+#EXTINF:-1 group-title="Portugal..." tvg-id="" tvg-logo="https://assimeportugal.com/wp-content/uploads/2020/10/lg-assim.png",❖ Assim é Portugal 🇵🇹
+https://video04.logicahost.com.br/assimeportugal/assimeportugal/playlist.m3u8
+#EXTINF:-1 group-title="Portugal..." tvg-id="" tvg-logo="https://www.rfptv.pt/storage/479/config/MYvhCGImba3MPCwmRu2pZgGkFhy2L6tkTLsSO3LN.png",❖ RFPtv ᴸᴼᵂ 🇵🇹
+#EXTVLCOPT:http-origin=https://player.logicahost.com.br/
+#EXTVLCOPT:http-referrer=https://player.logicahost.com.br/
+https://video03.logicahost.com.br/rfptv/rfptv/playlist.m3u8
+#EXTINF:-1 group-title="News 🇵🇹🇧🇷" tvg-id="Euronews.pt" tvg-logo="https://m.media-amazon.com/images/G/01/digital/video/Linear_Clean_Slate/euronews.png",❖ Euronews 🇵🇹
+https://38cf202f635c4e6d9a9ecd1dc805222a.mediatailor.eu-west-1.amazonaws.com/v1/manifest/0547f18649bd788bec7b67b746e47670f558b6b2/production-LiveChannel-6572/aa7d84c5-ed1b-4706-aa89-11c525faf07d/5.m3u8?@iprtlk
+#EXTINF:-1 group-title="News 🇵🇹🇧🇷" tvg-id="RECORDNEWS" tvg-logo="https://raw.githubusercontent.com/iprtl/p1/master/logo/RecordNew.webp",❖ Record News 🇧🇷
+https://rnw-rn-samsungtvplus.otteravision.com/rnw/rn/rnw_rn.m3u8?@iprtlk
+#EXTINF:-1 group-title="News 🇵🇹🇧🇷" tvg-id="" tvg-logo="https://i.imgur.com/LnApLKd.png",❖ SBT News 🇧🇷
+https://amg00527-amg00527c5-amgplt0026.playout.now3.amagi.tv/ts-us-w2-n1/playlist/amg00527-amg00527c5-amgplt0026/playlist.m3u8?@iprtlk
+#EXTINF:-1 group-title="News 🇵🇹🇧🇷" tvg-id="CNNBRASIL" tvg-logo="https://raw.githubusercontent.com/iprtl/p1/master/logo/cnnbr.png",❖ CNN Brasil 🇧🇷
+https://d25usgadhphvwi.cloudfront.net/hls/main.m3u8?@iprtlk
