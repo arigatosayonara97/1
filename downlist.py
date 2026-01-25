@@ -100,35 +100,31 @@ with open(output_file, "w") as f:
         # Verifica se a primeira linha é um cabeçalho #EXTM3U
         if lines and lines[0].strip().startswith("#EXTM3U"):
             if not wrote_header:
-                # Escreve o cabeçalho completo com atributos, se presente
                 f.write(lines[0].strip() + "\n")
                 line_count += 1
                 wrote_header = True
-                
-                # Extrai URL de EPG se presente
+
                 epg_url = extract_epg_url(lines[0])
                 if epg_url and epg_url not in epg_urls:
                     epg_urls.append(epg_url)
                     print(f"  URL de EPG encontrada: {epg_url}")
-            start_idx = 1  # Pular esta linha nas próximas listas
+
+            start_idx = 1
 
         for i in range(start_idx, len(lines)):
             line = lines[i].strip()
             if not line:
-                continue  # Ignorar linhas em branco
+                continue
 
-            # CORREÇÃO: Distinguir entre cabeçalhos simples e com atributos importantes
             if line.startswith("#EXTM3U"):
                 if is_simple_extm3u_header(line):
-                    # Ignora apenas cabeçalhos simples duplicados
                     continue
                 else:
-                    # Preserva cabeçalhos com atributos importantes (como url-tvg)
                     epg_url = extract_epg_url(line)
                     if epg_url and epg_url not in epg_urls:
                         epg_urls.append(epg_url)
                         print(f"  URL de EPG encontrada: {epg_url}")
-                    
+
                     f.write(line + "\n")
                     line_count += 1
                     continue
@@ -136,12 +132,6 @@ with open(output_file, "w") as f:
             f.write(line + "\n")
             line_count += 1
 
-            if line_count >= 2120000:
-                print(f"Limite de 2120000 linhas atingido")
-                break
-
-        if line_count >= 2120000:
-            break
 
 print(f"\nArquivo {output_file} criado com {line_count} linhas")
 print(f"URLs de EPG encontradas e preservadas:")
