@@ -4,7 +4,7 @@ import xml.etree.ElementTree as ET
 from time import sleep
 
 # ================= CONFIGURAÇÃO =================
-M3U_URL = "https://github.com/caliwyr/Software/raw/00c10301dc4a4b6ceba7eaebcc1c4171f17192f6/IPTV/lista1.m3u"
+M3U_URL = "https://github.com/arigatosayonara97/1/raw/refs/heads/main/lista1.M3U"
 LOCAL_M3U = "listacomepg.m3u"
 SLEEP_BETWEEN_DOWNLOADS = 2  # segundos para não sobrecarregar servidores
 
