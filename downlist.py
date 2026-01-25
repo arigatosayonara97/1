@@ -141,13 +141,6 @@ for epg_url in epg_urls:
 
 
 
-
-
-
-
-
-
-import os
 import requests
 import logging
 from logging.handlers import RotatingFileHandler
@@ -163,71 +156,10 @@ logger.setLevel(logging.DEBUG)
 
 log_file = "log.txt"
 file_handler = RotatingFileHandler(log_file, maxBytes=1000000, backupCount=5)
-file_handler.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(message)s'))
+file_handler.setFormatter(
+    logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+)
 logger.addHandler(file_handler)
-
-# =========================
-# DOWNLOAD E MERGE M3U
-# =========================
-repo_urls = [
-    "https://github.com/iprtl/m3u/raw/b8507db8229defeda88512eaaf66bfe0e385e81c/Freetv.m3u",
-]
-
-lists = []
-
-for url in repo_urls:
-    print(f"Processando URL: {url}")
-    try:
-        response = requests.get(url, allow_redirects=True, timeout=15)
-
-        if response.status_code == 200:
-            if url.lower().endswith(('.m3u', '.m3u8')) or '#EXTM3U' in response.text:
-                filename = url.split("/")[-1]
-                lists.append((filename, response.text))
-        else:
-            print(f"Erro ao acessar {url}")
-    except requests.exceptions.RequestException as e:
-        print(f"Erro: {e}")
-
-lists = sorted(lists, key=lambda x: x[0])
-
-output_file = "lista1.M3U"
-line_count = 0
-wrote_header = False
-epg_urls = []
-
-def extract_epg_url(line):
-    match = re.search(r'url-tvg=["\']([^"\']+)["\']', line, re.IGNORECASE)
-    return match.group(1) if match else None
-
-with open(output_file, "w") as f:
-    for _, content in lists:
-        lines = content.splitlines()
-
-        for line in lines:
-            line = line.strip()
-            if not line:
-                continue
-
-            # 🔹 NUNCA REMOVE #EXTM3U
-            if line.startswith("#EXTM3U"):
-                f.write(line + "\n")
-                line_count += 1
-
-                epg = extract_epg_url(line)
-                if epg and epg not in epg_urls:
-                    epg_urls.append(epg)
-                continue
-
-            f.write(line + "\n")
-            line_count += 1
-
-            if line_count >= 212:
-                break
-        if line_count >= 212:
-            break
-
-print(f"Arquivo base criado com {line_count} linhas")
 
 # =========================
 # FUNÇÕES AUXILIARES
@@ -275,7 +207,7 @@ def search_google_images(query):
 # PROCESSAMENTO FINAL
 # =========================
 def process_m3u_file(input_file, output_file):
-    with open(input_file) as f:
+    with open(input_file, encoding="utf-8", errors="ignore") as f:
         lines = f.readlines()
 
     extm3u_headers = []
@@ -285,7 +217,6 @@ def process_m3u_file(input_file, output_file):
     while i < len(lines):
         line = lines[i].strip()
 
-        # 🔹 PRESERVA TODAS AS LINHAS #EXTM3U
         if line.startswith("#EXTM3U"):
             if line not in extm3u_headers:
                 extm3u_headers.append(line)
@@ -322,9 +253,7 @@ def process_m3u_file(input_file, output_file):
 
         i += 1
 
-    # ✍️ REGRAVA O ARQUIVO FINAL
-    with open(output_file, "w") as f:
-        # escreve TODOS os #EXTM3U encontrados
+    with open(output_file, "w", encoding="utf-8") as f:
         for h in extm3u_headers:
             f.write(h + "\n")
 
@@ -341,8 +270,8 @@ def process_m3u_file(input_file, output_file):
                 f.write(e + "\n")
             f.write(ch["url"] + "\n")
 
-    with open("playlist.json", "w") as f:
-        json.dump(channels, f, indent=2)
+    with open("playlist.json", "w", encoding="utf-8") as f:
+        json.dump(channels, f, indent=2, ensure_ascii=False)
 
 # =========================
 # EXECUÇÃO
@@ -350,7 +279,6 @@ def process_m3u_file(input_file, output_file):
 process_m3u_file("lista1.M3U", "lista1.M3U")
 
 print("Processamento concluído ✔")
-print("EPGs preservados:")
-for epg in epg_urls:
-    print(" -", epg)
+
+
 
