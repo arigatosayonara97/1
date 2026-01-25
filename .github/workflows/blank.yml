@@ -2,7 +2,7 @@ name: Baixando Lista
 
 on:
   schedule:
-    - cron: '*/45 * * * *'  # Schedule to run every 30 minutes
+    - cron: '0 13 * * *'  # Executa todos os dias às 10h (horário de Brasília)
   pull_request:
     branches:
       - main
@@ -14,7 +14,7 @@ jobs:
 
     steps:
     - name: Checkout Repositório
-      uses: actions/checkout@v4  # Updated to use a newer version
+      uses: actions/checkout@v4
 
     - name: Configurar Git
       run: |
@@ -27,19 +27,16 @@ jobs:
 
     - name: Instalando dependências
       run: |
-        # Install required Python dependencies
         python3 -m pip install --upgrade pip
-        python3 -m pip install streamlink selenium requests beautifulsoup4 lxml python-dateutil yt-dlp youtube-dl pytz gdown requests streamlink beautifulsoup4 selenium yt_dlp playwright
+        python3 -m pip install streamlink selenium requests beautifulsoup4 lxml python-dateutil yt-dlp youtube-dl pytz gdown yt_dlp playwright
 
     - name: Verificar versão do Python
       run: |
         python3 --version
 
-
-    - name: Rodar script agrupadordelistas.py
+    - name: Rodar script downlist.py
       run: |
         python3 downlist.py
-
 
     - name: Adicionar Mudanças ao Controle de Versão
       run: |
@@ -48,9 +45,9 @@ jobs:
 
     - name: Garantir alterações mais recentes do repositório remoto
       run: |
-        git pull origin main || echo "Erro ao fazer pull, pode ser que já tenha as últimas alterações."
+        git pull origin main || echo "Erro ao fazer pull."
 
     - name: Commit e Push
       run: |
         git commit -m "Atualizar lista baixada" || echo "Nenhuma mudança para commitar."
-        git push origin main || echo "Erro ao fazer push. Pode ser necessário revisar conflitos."
+        git push origin main || echo "Erro ao fazer push."
