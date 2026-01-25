@@ -136,11 +136,11 @@ with open(output_file, "w") as f:
             f.write(line + "\n")
             line_count += 1
 
-            if line_count >= 212:
-                print(f"Limite de 212 linhas atingido")
+            if line_count >= 2120000:
+                print(f"Limite de 2120000 linhas atingido")
                 break
 
-        if line_count >= 212:
+        if line_count >= 2120000:
             break
 
 print(f"\nArquivo {output_file} criado com {line_count} linhas")
