@@ -1,4 +1,4 @@
-#EXTM3U url-tvg="https://epgshare01.online/epgshare01/epg_ripper_ALL_SOURCES1.xml.gz,https://www.open-epg.com/generate/JVDwzRJDcu.xml.gz,https://i.mjh.nz/PlutoTV/all.xml.gz,https://i.mjh.nz/SamsungTVPlus/all.xml.gz,https://github.com/matthuisman/i.mjh.nz/raw/master/SamsungTVPlus/all,https://github.com/iptv-org/epg/raw/9b331e6cfab19ad2f683b212aa079aac07fe72fe/sites/i.mjh.nz/i.mjh.nz_samsung.channels.xml" refresh="3600"
+#EXTM3U url-tvg="https://www.open-epg.com/generate/JVDwzRJDcu.xml.gz,https://i.mjh.nz/PlutoTV/all.xml.gz,https://i.mjh.nz/SamsungTVPlus/all.xml.gz,https://github.com/matthuisman/i.mjh.nz/raw/master/SamsungTVPlus/all,https://github.com/iptv-org/epg/raw/9b331e6cfab19ad2f683b212aa079aac07fe72fe/sites/i.mjh.nz/i.mjh.nz_samsung.channels.xml" refresh="3600"
 #EXTINF:-1 group-title="Telegram @iprtlk" tvg-id="Undefined" tvg-logo="https://jerrymoz.files.wordpress.com/2024/03/qr_paypal.png",❖ Telegram @iprtlk
 https://jerrymoz.wordpress.com/wp-content/uploads/2024/03/qr_paypal.png?@iprtlk
 #EXTINF:-1 group-title="Buy me a Coffee" tvg-id="Undefined" tvg-logo="https://jerrymoz.files.wordpress.com/2024/03/qr_paypal.png",❖ Buy me a Coffee
