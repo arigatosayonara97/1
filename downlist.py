@@ -3,7 +3,7 @@ import requests
 #https://github.com/iprtl/m3u/raw/b8507db8229defeda88512eaaf66bfe0e385e81c/Freetv.m3u
 # URLs dos repositórios que contêm os arquivos M3U
 repo_urls = [
-    "https://github.com/gratinomaster/1/raw/refs/heads/main/lista_10.M3U",
+    "https://github.com/gratinomaster/1/raw/refs/heads/main/lista_100.M3U",
 ]
 
 lists = []
